@@ -1,17 +1,22 @@
-@start program;
-
-
+@start : program;
 program : declarations fundefs instructions ;
-
 @declarations : declarations declaration | declaration ;
 @declaration : TYPE inits ;
 @declaration : error ;
-
 @inits : inits ',' init | init ;
 @init : ID '=' expression ;
-
 @instructions : instructions instruction | instruction ;
-@instruction : instruction | print_instr | labeled_instr | assignment | choice_instr | while_instr | repeat_instr | return_instr | break_instr | continue_instr | compound_instr ;
+instruction : assignment ;
+instruction : print_instr ;
+instruction : labeled_instr ;
+instruction : assignment ;
+instruction : choice_instr ;
+instruction : while_instr ;
+instruction : repeat_instr ;
+instruction : return_instr ;
+instruction : break_instr ;
+instruction : continue_instr ;
+instruction : compound_instr ;
 
 @print_instr : PRINT expression ;
 @print_instr : PRINT error ;
@@ -86,12 +91,16 @@ REPEAT : 'repeat' ;
 UNTIL : 'until' ;
 IF : 'if' ;
 ELSE : 'else' ;
-TYPE : 'int' | 'float' | 'double' | 'short' | 'long' ;
+TYPE : 'type' ;
 PRINT : 'print' ;
 RETURN : 'return' ;
 INTEGER : 'int' ;
 FLOAT : 'float' ;
 STRING : 'string' ;
+DOUBLE : 'double' ;
+
+WHILE : 'while' ;
+
 
 
 GE : '//>=';
